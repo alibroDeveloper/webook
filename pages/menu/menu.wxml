@@ -1,0 +1,80 @@
+<!--页头引入模板  -->
+<import src='../template/templates.wxml' />
+<template is='header' data='{{header}}' />
+<!-- 顶部导航start -->
+<view class='tab-container'>
+<scroll-view scroll-x="true" class="ip_tab_comtainer">
+  <!-- <view class="ip_tab_comtainer_padd"></view> -->
+  <block wx:for="{{categorys}}" wx:for-item="category" wx:key="{{category.id}}" >
+    <view class="{{category.isSelect?'ip_tab_item_s':'ip_tab_item_n'}}" bindtap="onIpItemClick" wx:key="{{category.id}}" data-item="{{category}}" >
+      {{category.name}}
+    </view>
+  </block>
+  <view class="ip_tab_comtainer_padd"></view>
+</scroll-view>
+</view>
+<!-- 顶部导航end -->
+
+<!--tab content 内容start  -->
+<view class='content'>
+  <!-- {{content}} -->
+  <scroll-view scroll-y style="height: 1000rpx;"   scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+  <block wx:for='{{menuView}}' wx:key='id' wx:for-item='menu' >
+  <view class='menu' id='menu{{index}}' catchtap='viewMenuDetail' data-set='{{menu}}' data-id='{{menu.id}}' data-index='{{index}}'>
+    <view class='img-wrp'>
+      <image src='{{menu.imgUrl}}' mode='aspctFill'></image>
+    </view>
+    <view class='text-wrp'>
+      <text style='font-size:35rpx;padding:10rpx;'>{{menu.name}}</text>
+      <text style='font-size:25rpx;padding:10rpx;color:red;'>￥{{menu.price}} 元/份</text>
+
+      <view class='menu-detail'>
+        <text>销量 ：{{menu.saleCount}}</text>
+        <view class='order-opt'>
+          <view class='icon'>
+            <image class='icon minus' src='/images/icon/minus-circle-fill.png' mode='aspectFill' catchtap='removeFromCart' data-set='{{menu}}' data-index='{{index}}'></image>
+          </view>
+        <view class='count'>{{menu.orderNum==null?0:menu.orderNum}}</view>
+          <view class='icon'>
+            <image class='icon add' src='/images/icon/plus-circle-fill-green.png' mode='aspectFill' catchtap='addToCart' data-set='{{menu}}' data-index='{{index}}'></image>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</block>
+</scroll-view>
+
+
+</view>
+<!-- tab content 内容end -->
+<!--copyright start  -->
+<view class='menu-copyright'>
+  <hr/>
+  <text>技术支持：@德至仁和科技</text>
+  <utext>Copyright ©All Right Reserved </utext>
+  <text>www.deltatech.top</text>
+  <text>From 2018 To 2028</text>
+</view>
+
+
+
+<!--copyright end  -->
+<!-- 底部tabbar start -->
+ 
+<view class='bottom-container'>
+  <view class='bottom-tab-wrp'>
+    <view class='cart'>
+      <image src='/images/icon/cartfill.png' mode='scaleToFill'></image>
+      <view class='cart-reculation'>
+      <text>数量：{{cart}}</text>
+      <text>总计：{{totalPrice}} 元</text>
+      
+      </view>
+    </view>
+    <view class='submit'>
+      完成
+    </view>
+  </view>
+</view> 
+<!-- 底部tabbar end -->

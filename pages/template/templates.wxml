@@ -1,0 +1,154 @@
+<template name='header'>
+  <!--页头start  -->
+  <view class='container' style='height:{{header.height}};'>
+  <view class='container' style='position : fixed;top:0;z-index:1;'>
+    <view style='width:100%;top:0;z-index:1;'>
+      <image class='bg' src='{{header.bg}}'></image>
+      <view class='header' style='background-color: rgba(12,12,12, {{header.bgOpacity}});'>
+        <view class='index-header'>
+          <!--标题start  -->
+          <view class='title container'>
+            <text>{{header.title}}</text>
+          </view>
+          <!--标题end  -->
+          <!--扫一扫start  -->
+          <view class='scanCode' wx:if="{{header.scanShow}}">
+            <image src='/images/icon/scanning.png' class='icon' mode='scaleToFill'></image>
+          </view>
+          <view wx:if='{{header.returnShow}}' class='scanCode'  >
+           <text style='color:white;font-size:32rpx;' decode catchtap='goBack'> &lt;{{header.returnText}}</text>
+          </view>
+          <!--扫一扫end  -->
+        </view>
+        <!--搜索框start  -->
+        <view class='search-container'>
+          <!--位置start  -->
+          <button class='location ' wx:if="{{header.locationShow}}" bindgetuserinfo='chooseLocation' open-type='getUserInfo'>
+            <image src='/images/icon/location.png' mode='scaleToFill'></image>
+            <text>{{header.location}}</text>
+          </button>
+          <!--位置end  -->
+            <view class='search' wx:if="{{header.searchBoxShow}}" >
+            <view class="serarch-content">
+              <image src="/images/search-pic.png" class="search-icon" mode='{{header.mode}}' />
+              <input placeholder="请输入搜索内容" class="search-input" maxlength="30" confirm-type="搜索" bindinput='searchInput'>
+              </input>
+              <button class='search-btn' bindtap="search">
+                <text>{{header.searchText}}</text>
+              </button>
+            </view>
+          </view>  
+        </view>
+        <!--搜索框end  -->
+
+      </view>
+    </view>
+  </view>
+  </view>
+  <!--页头end  -->
+</template>
+
+
+
+
+<template name='nav'>
+  <!--分类导航栏start  -->
+  <view class='container'>
+  <block wx:if='{{nav.show}}'>
+    <view class='nav-box' style=''>
+      <image class='bg' src='{{nav.bg.img}}' mode='scaleToFill'></image>
+      <view class='nav-wrp' style='background-color:{{nav.bg.bgColor}};'>
+        <!-- 分类导航start -->
+        <view class='container'>
+           <scroll-view scroll-x style='width:90%;height:100%;'> 
+            <view class='category-nav'>
+              <view class='category' wx:for='{{nav.category}}' wx:key='id' catchtap='viewStoreLis'>
+                <view class='container' style='height:100%;justify-content:center;'>
+                <image src='{{item.imgurl}}'></image>
+                <text>{{item.name}}</text>
+                </view>
+              </view>
+            </view>
+           </scroll-view> 
+        </view>
+        <!-- 分类导航end -->
+      </view>
+    </view>
+  </block>
+  </view>
+  <!--分类导航栏end  -->
+</template>
+
+
+<!--轮播模块start  -->
+<template name='banner'>
+  <!--轮播start  -->
+  <view class='container' style=''>
+      <!--banner backgroun   -->
+        <image src='{{banner.bg}}' style='opacity:0.4;' width='100%' class='bg' mode='{{banner.modeStyle.scaleToFill}}'></image>
+      <!--banner backgroun   -->
+  <block wx:if='{{banner.show}}'>
+    <view class='banner-box'>
+      <view class='banner-wrp'>
+        <swiper indicator-dots="{{banner.swiperstyle.indicatorDots}}" autoplay="{{banner.swiperstyle.autoplay}}" interval="{{banner.swiperstyle.interval}}" duration="{{banner.swiperstyle.duration}}     current-item-id='{{banner.swiperstyle.currentitemid}}' circular={{banner.swiperstyle.circular}}"
+          bindchange='bindSwiperChange' vertical='{{banner.swiperstyle.vertical}}'>
+          <block wx:for="{{banner.imgs}}" wx:key="id">
+            <swiper-item>
+              <navigator url='{{item.navTo}}{{item.storeId}}'>
+                <image src="{{item.imgurl}}" id="{{index}}" class="slide-image" mode='{{banner.modeStyle.widthFix}}' />
+              </navigator>
+            </swiper-item>
+          </block>
+        </swiper>
+      </view>
+    </view>
+  </block>
+</view>
+  <!--轮播end  -->
+
+</template>
+<!--轮播模块start  -->
+
+
+<template name='list'>
+  <!--精选商家标题start  -->
+  <block wx:if='{{list.subTitle.show}}'>
+    <view class='sub-title'>
+      <text>附近精选</text>
+    </view>
+  </block>
+  <!--精选商家标题end  -->
+
+  <!--精选商家列表start  -->
+  <view class='store-list-wrp'>
+    <view class='store-list'>
+      <block wx:for="{{list.models}}" wx:key="id" current-item-id='{{item.id}}'>
+        <view class='store' id='{{index}}' catchtap='viewStore'>
+          <image src='{{item.imgUrl}}' mode='scaleToFill'></image>
+          <text style='font-size:25rpx;padding:10rpx;'>{{item.storeName}}</text>
+          <block wx:if='{{list.icon.show}}'>
+            <view class='store-location'>
+              <image src='{{list.icon.icons.location}}'></image>
+              <text>{{item.county}} {{item.location}}</text>
+            </view>
+          </block>
+        </view>
+      </block>
+
+
+      <!--调试bug算法 防止一行仅有两个项目的情况  -->
+      <block wx:for="{{list.models.length%3==2? 1 : 0}}" wx:key="key">
+        <view class='store' id='{{index}}' style='border:1px solid rgba(0,0,0,0)'>
+          <image src='' mode=''></image>
+          <text style='font-size:25rpx;padding:10rpx;'></text>
+          <view class='store-location'>
+            <image src=''></image>
+            <text></text>
+          </view>
+        </view>
+      </block>
+      <!--调试bug算法 防止一行仅有两个项目的情况  -->
+    </view>
+  </view>
+  <!--精选商家列表end  -->
+</template>

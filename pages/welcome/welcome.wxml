@@ -1,0 +1,14 @@
+<view class='welcomecontainer'>
+  <view class='wrp'>
+    
+      <open-data type="userAvatarUrl" class='opendata' ></open-data>
+    
+    <open-data type="userNickName" class='opendata'></open-data>
+    <button style='margin-top:50rpx;width:70%;' wx:if="{{canIUse}}" type='primary' open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">
+      开始点餐
+    </button>
+     <view wx:else >请升级微信版本</view> 
+    <view class='copyright'>@德至仁和科技 版权所有© 2018-2028</view>
+    <image src='{{url}}' mode='scaleToFit'></image>
+  </view>
+</view>

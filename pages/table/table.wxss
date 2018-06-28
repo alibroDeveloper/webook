@@ -1,0 +1,83 @@
+/*引入头部css  */
+@import "../template/templates.wxss";
+
+/* <!--serviceList start  --> */
+.list {
+  width: 100%;
+  height: 200rpx;
+  position: relative;
+  border-bottom: 1px solid white; 
+}
+
+.fore {
+  background-color: rgba(12, 12, 12, 0.5);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+}
+.content-wrp{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+.content {
+  display: flex;
+  flex-direction: row;
+  justify-content: center ;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  color: white;
+  font:bold;
+}
+/* <!--serviceList end  --> */
+
+
+/* <!--tabbar start  --> */
+.tabBar{
+  width: 100%;
+  height: 50px;
+  position: fixed;
+  bottom: 0;
+  background-color: white;
+}
+.wrp{
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+
+}
+
+.item{
+  width: 20%;
+   /* background-color: darkgray;  */
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: none;
+  border-radius: none;
+  background: none;
+  position: relative;
+}
+
+.icon{
+  width: 30px;
+  height: 30px;
+  margin: 0;
+  padding: 5px;
+}
+
+.btntext{
+  position: absolute;
+  height: 15px;
+  font-size: 10px;
+  align-items: center;
+  bottom: 5px;
+  /* color: #8a8a8a */
+}
+
+/* <!--tabbar end  --> */

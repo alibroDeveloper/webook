@@ -1,0 +1,21 @@
+<!--页头引入模板  -->
+<import src='../template/templates.wxml' />
+<template is='header' data='{{header}}' />
+<!--分类导航栏start  -->
+<import src='/pages/template/templates.wxml' />
+<template is='nav' data='{{nav}}' />
+<!--分类导航栏end  -->
+
+<!--轮播start  -->
+<import src='/pages/template/templates.wxml' />
+<template is='banner' data='{{banner}}' />
+
+<!--轮播end  -->
+
+
+
+
+<!--精选商家列表start  -->
+<import src='/pages/template/templates.wxml' />
+<template is='list' data='{{list}}' />
+<!--精选商家列表end  -->

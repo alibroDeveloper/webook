@@ -1,0 +1,62 @@
+{
+  "pages": [
+    
+    "pages/start/start",
+    "pages/menu/menu",
+    "pages/welcome/welcome",
+    "pages/table/table",
+    "pages/index/index",
+    "pages/storeDetail/storeDetail",
+    "pages/storeList/storeList",
+    "pages/my/my"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#000",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "微点单",
+    "backgroundColor": "#eeeeee",
+    "backgroundTextStyle": "light",
+    "enablePullDownRefresh": false,
+    "navigationStyle": "custom"
+  },
+  "tabBar": {
+    "color": "#6e6d6b",
+    "selectedColor": "#e64340",
+    "borderStyle": "white",
+    "backgroundColor": "#fff",
+    "box-shadow": "0 0 6px 0",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "images/icon/home.png",
+        "selectedIconPath": "images/icon/home-on.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/storeList/storeList",
+        "iconPath": "images/icon/seller.png",
+        "selectedIconPath": "images/icon/seller-on.png",
+        "text": "优选"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "images/icon/vip.png",
+        "selectedIconPath": "images/icon/vip-on.png",
+        "text": "会员"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "images/icon/cart.png",
+        "selectedIconPath": "images/icon/cart-on.png",
+        "text": "已点"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "iconPath": "images/icon/account-filling.png",
+        "selectedIconPath": "images/nav/my-on.png",
+        "text": "我的"
+      }
+    ]
+  }
+  
+}

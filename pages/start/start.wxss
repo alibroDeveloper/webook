@@ -1,0 +1,18 @@
+.container{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: gray;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.container image{
+  width: 400rpx;
+  height: 400rpx;
+  margin-bottom: 100rpx;
+}
+.container text{
+  color: white;
+  font-size: 30rpx;
+}

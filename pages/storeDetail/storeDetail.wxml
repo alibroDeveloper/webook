@@ -1,0 +1,106 @@
+<!--页头引入模板start -->
+<import src='/pages/template/templates.wxml' />
+<template is='header' data='{{header}}' />
+<!--页头引入模板 end -->
+
+<!--分类导航栏start  -->
+<import src='/pages/template/templates.wxml' />
+<template is='nav' data='{{nav}}' />
+<!--分类导航栏end  -->
+
+<!--轮播start  -->
+<import src='/pages/template/templates.wxml' />
+<template is='banner' data='{{banner}}' />
+
+<!--轮播end  -->
+
+<!--商家地址 start  -->
+<view class='container' style='align-items:flex-start;'>
+  <view class='store-location-wrp'>
+    <view class='store-location'>
+      <image class='icon' src='/images/location.png'></image>
+      <text style=''>山东省曹县绿洲国际西南角</text>
+    </view>
+    <view class='tel'>
+      <image class='icon' src='/images/icon/phone.png '></image>
+      <text>电话</text>
+    </view>
+  </view>
+</view>
+<!--商家地址 end  -->
+
+<!--商家信息 start  -->
+<view class='container'>
+  <view class='store-info-wrp'>
+    <view class='sub-title'>
+      <text>商家信息</text>
+    </view>
+    <view class='store-info'>
+      <view class='free-service'>
+        <text>●免费车位</text>
+        <text>●免费WiFi</text>
+        <text>●免费WiFi</text>
+      </view>
+      <view class='open-time'>
+        <text>营业时间：周一至周末 6:00-23:00</text>
+        <text>以商家实际为准</text>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!--商家信息 end  -->
+
+<!--桌台列表start  -->
+<!--精选商家标题start  -->
+<block wx:if='{{list.subTitle.show}}'>
+  <view class='sub-title'>
+    <text>{{list.subTitle.title}}</text>
+  </view>
+</block>
+<!--精选商家标题end  -->
+
+<!--精选商家列表start  -->
+<view class='store-list-wrp'>
+  <view class='store-list'>
+    <block wx:for="{{list.models}}" wx:key="id" current-item-id='{{item.id}}'>
+      <view class='store' id='{{index}}' catchtap='toTable{{!item.isBooked && !item.isUsing}}'>
+
+        <view class='mask' hidden='{{!item.isBooked && !item.isUsing}}'>
+          <view class='icon'>
+            <image class='icon' mode='widthFix' src='/images/icon/lock.png' style='width:100%;height:100%;'>
+            </image>
+          </view>
+
+          <text style='font-size:30rpx;'>{{item.isBooked?'已预定':'已占用'}}</text>
+        </view>
+
+        <image src='{{item.imgUrl}}' mode='scaleToFill'></image>
+        <text style="font-size:25rpx;padding:5rpx;">
+          {{item.room}} {{item.num==null?'':item.num+'号桌'}}
+          </text>
+        <block wx:if='{{list.icon.show}}'>
+          <view class='store-location'>
+            <image style='width:35rpx;height:35rpx;' src='{{item.isBooked?list.icon.icons.booked:item.isUsing?list.icon.icons.inuse:list.icon.icons.enable}}'></image>
+            <text>{{item.isBooked?'已预定':item.isUsing?'已占用':'可选择'}}</text>
+          </view>
+        </block>
+      </view>
+    </block>
+
+    <!--调试bug算法 防止一行仅有两个项目的情况  -->
+    <block wx:for="{{list.models.length%3==2? 1 : 0}}" wx:key="key">
+      <view class='store' id='{{index}}' style='border:1px solid rgba(0,0,0,0)'>
+        <image src='' mode=''></image>
+        <text style='font-size:25rpx;padding:10rpx;'></text>
+        <view class='store-location'>
+          <image src=''></image>
+          <text></text>
+        </view>
+      </view>
+    </block>
+    <!--调试bug算法 防止一行仅有两个项目的情况  -->
+  </view>
+</view>
+<!--精选商家列表end  -->
+<!--桌台列表end  -->
