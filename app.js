@@ -89,23 +89,7 @@ App({
   appData: {
     user: {
 
-      appId: "wxd3d61f01871bb43b",
-      avatarUrl: "https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIEIVHzwSgwTxWDpSYPdAmHqklY3UMHibre9fv2KIWhaS2swEPhTykpWWYjuBtmUbCzn5cibnhbQQcw/132",
-      city: "Auburn City",
-      country: "US",
-      county: null,
-      email: null,
-      gender: 1,
-      idNum: null,
-      isseller: null,
-      nickName: "Delta Tech",
-      openId: "oS_hF46ZIKMsUMm1MIDYyhDpvUQ0",
-      password: null,
-      province: "Washington",
-      realName: null,
-      sessionKey: "ExrHshEEgxl+UbPD0tSb7A==",
-      tel: null,
-      unionId: null,
+      
     }
   },
 
